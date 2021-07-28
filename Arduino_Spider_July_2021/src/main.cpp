@@ -9,7 +9,7 @@ void setup() {
   pinMode(RED_LED, OUTPUT);
   pinMode(YELLOW_LED, OUTPUT);
   pinMode(GREEN_LED, OUTPUT);
-  boolean isConnected = false;
+  //boolean isConnected = false;
   Serial.begin(9600);
 
   // show signs of life
@@ -42,6 +42,11 @@ bool yellow_led_on = false;
 
 
 void loop() {
+
+
+
+
+  return; 
 
   if (yellow_led_on) {
     digitalWrite(YELLOW_LED, LOW);
@@ -117,7 +122,7 @@ void getCommand()
   }
 } // of getCommand()
 
-/*
+
 void serialEvent() {
   while (Serial.available()) {
     // get the new byte:
@@ -131,4 +136,3 @@ void serialEvent() {
     }
   }
 } // of serial event
-*/
