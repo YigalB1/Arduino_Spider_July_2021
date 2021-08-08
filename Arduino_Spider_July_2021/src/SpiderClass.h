@@ -1,0 +1,65 @@
+#include <Arduino.h>
+#include <servo.h>
+
+#define NUM_OF_SERVOS_IN_LEG 3
+#define NUM_OF_LEGS_IN_SPIDE 4
+
+
+struct Arduino_Servo_cmd_struct
+    {
+        bool valid; // if starting with # it is a comment
+        int servo_num;
+        int servo_angle;
+        int wait_time;
+    };
+
+class Spider_Servo
+    {
+        Arduino_Servo_cmd_struct Servo_cmd;
+        //Arduino_Serial_Port Servo_port;
+
+        public:       
+        void set_motor_to_angle (Arduino_Servo_cmd_struct _angle) {
+            // TBD: write values to servo
+
+        }
+
+    }; // of Spider_Servo class
+// **************************************************************
+
+    class Spider_Leg
+    {
+        public:
+        Spider_Servo motor[NUM_OF_SERVOS_IN_LEG];
+
+        
+    }; // of Spider_Leg class
+// **************************************************************
+    class Spider_Leds
+    {
+        public:
+        int led_red;
+        int led_yellow;
+        int led_green;
+        
+        public: void set_led_on(int _led_num) {
+            digitalWrite(_led_num, HIGH);
+        }
+
+        public: void set_led_off(int _led_num) {
+            digitalWrite(_led_num, LOW);
+        }
+        
+    }; // of Spider_Leds class
+// **************************************************************
+    class spider_anatomy {
+        public:
+        
+    Spider_Leds leds = Spider_Leds();
+    Spider_Leg left_front = Spider_Leg();
+    Spider_Leg left_back = Spider_Leg();
+    Spider_Leg right_front = Spider_Leg();
+    Spider_Leg right_back = Spider_Leg();
+    
+    }; // of spider_anatomy class
+    
