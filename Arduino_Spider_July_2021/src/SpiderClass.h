@@ -1,5 +1,7 @@
 #include <Arduino.h>
 #include <servo.h>
+#include <Wire.h>
+#include <Adafruit_PWMServoDriver.h>
 
 #define NUM_OF_SERVOS_IN_LEG 3
 #define NUM_OF_LEGS_IN_SPIDE 4
@@ -15,12 +17,20 @@ struct Arduino_Servo_cmd_struct
 
 class Spider_Servo
     {
+        Adafruit_PWMServoDriver servos_control = Adafruit_PWMServoDriver();
+        int servoMIN = 150;
+        int servoMAX = 600;
+               
+        
         Arduino_Servo_cmd_struct Servo_cmd;
+
+
         //Arduino_Serial_Port Servo_port;
 
         public:       
-        void set_motor_to_angle (Arduino_Servo_cmd_struct _angle) {
+        void set_motor_to_angle (Arduino_Servo_cmd_struct _servo_data) {
             // TBD: write values to servo
+            servos_control.setPWM(_servo_data.servo_num, 0, _servo_data.servo_angle);
 
         }
 
