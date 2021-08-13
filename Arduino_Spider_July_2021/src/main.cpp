@@ -101,6 +101,11 @@ delay (2000);
 current_command.inputString ="LED RED OFF"; // for debug 
 current_command.analyze();
 current_command.execute_command(my_spider);
+delay (2000);
+
+current_command.inputString ="MOTOR 0 0 060 0200"; // for debug 
+current_command.analyze();
+current_command.execute_command(my_spider);
 
 delay (2000);
 

@@ -204,6 +204,8 @@ class Command {
         int angle_num = params[2].toInt();
         int time_num = params[3].toInt();
 
+        //__spider.left_back.motor.
+
         // TBD: activate servo motor accordingly
              
     } // of execute_motor_command()
