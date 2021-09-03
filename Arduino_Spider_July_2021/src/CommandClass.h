@@ -22,6 +22,9 @@ class Command {
     int delimiters[MAX_NUM_OF_PARAMS]; 
     
     String InString;
+
+    Arduino_Servo_cmd_struct servo_cmd = Arduino_Servo_cmd_struct();
+
     
     void init() {
         inputString.reserve(200);
@@ -183,9 +186,7 @@ class Command {
         Serial.print(params[0]);
         Serial.print(" params[1]: ");
         Serial.println(params[1]);
-
-
-        Serial.println("Command is MOTOR");
+        
         if (num_of_params!=4) {
             Serial.println("ERROR: 4 pamaters are required for MOTOR command");                
             return;
@@ -198,11 +199,21 @@ class Command {
                 return;     
             } // of if
         } // of for loop
+       
             
         int leg_num = params[0].toInt();
         int motor_num = params[1].toInt();
         int angle_num = params[2].toInt();
         int time_num = params[3].toInt();
+
+        servo_cmd.servo_num = leg_num*3 + motor_num;
+        servo_cmd.servo_angle = angle_num;
+        servo_cmd.wait_time = time_num;
+        servo_cmd.valid = true;
+
+        __spider.left_back_leg.motor[motor_num].set_motor_to_angle(__spider.servos_control,servo_cmd);
+
+        //__spider.left_back.motor.
 
         // TBD: activate servo motor accordingly
              

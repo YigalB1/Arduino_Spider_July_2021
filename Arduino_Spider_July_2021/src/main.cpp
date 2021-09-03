@@ -2,9 +2,10 @@
 #include "CommandClass.h"
 
 
-
+//Adafruit_PWMServoDriver servos_control = Adafruit_PWMServoDriver();
 Command current_command = Command();
 spider_anatomy my_spider = spider_anatomy();
+
 
 int RED_LED  = 5; // red led
 int YELLOW_LED  = 6; // yellow led
@@ -30,6 +31,9 @@ bool yellow_led_on = false;
 
 void setup() {
   
+  my_spider.servos_control.begin();
+  my_spider.servos_control.setPWMFreq(60);
+
   inputString.reserve(200); // reserve 200 bytes for the inputString:
 
   pinMode(LED_BUILTIN, OUTPUT);
@@ -99,6 +103,11 @@ current_command.analyze();
 current_command.execute_command(my_spider);
 delay (2000);
 current_command.inputString ="LED RED OFF"; // for debug 
+current_command.analyze();
+current_command.execute_command(my_spider);
+delay (2000);
+
+current_command.inputString ="MOTOR 0 0 060 0200"; // for debug 
 current_command.analyze();
 current_command.execute_command(my_spider);
 

@@ -17,7 +17,7 @@ struct Arduino_Servo_cmd_struct
 
 class Spider_Servo
     {
-        Adafruit_PWMServoDriver servos_control = Adafruit_PWMServoDriver();
+        //Adafruit_PWMServoDriver servos_control = Adafruit_PWMServoDriver();
         int servoMIN = 150;
         int servoMAX = 600;
                
@@ -28,9 +28,9 @@ class Spider_Servo
         //Arduino_Serial_Port Servo_port;
 
         public:       
-        void set_motor_to_angle (Arduino_Servo_cmd_struct _servo_data) {
+        void set_motor_to_angle (Adafruit_PWMServoDriver _servo_cntrl, Arduino_Servo_cmd_struct _servo_cmd) {
             // TBD: write values to servo
-            servos_control.setPWM(_servo_data.servo_num, 0, _servo_data.servo_angle);
+            _servo_cntrl.setPWM(_servo_cmd.servo_num, 0, _servo_cmd.servo_angle);
 
         }
 
@@ -64,12 +64,12 @@ class Spider_Servo
 // **************************************************************
     class spider_anatomy {
         public:
-        
-    Spider_Leds leds = Spider_Leds();
-    Spider_Leg left_front = Spider_Leg();
-    Spider_Leg left_back = Spider_Leg();
-    Spider_Leg right_front = Spider_Leg();
-    Spider_Leg right_back = Spider_Leg();
+        Adafruit_PWMServoDriver servos_control = Adafruit_PWMServoDriver();    
+        Spider_Leds leds = Spider_Leds();
+        Spider_Leg left_front_leg = Spider_Leg();
+        Spider_Leg left_back_leg = Spider_Leg();
+        Spider_Leg right_front_leg = Spider_Leg();
+        Spider_Leg right_back_leg = Spider_Leg();
     
     }; // of spider_anatomy class
     
