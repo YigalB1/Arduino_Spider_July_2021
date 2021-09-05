@@ -1,7 +1,7 @@
 #include <Arduino.h>
 #include "CommandClass.h"
 
-
+// Sep 5
 //Adafruit_PWMServoDriver servos_control = Adafruit_PWMServoDriver();
 Command current_command = Command();
 spider_anatomy my_spider = spider_anatomy();
